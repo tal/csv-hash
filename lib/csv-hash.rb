@@ -18,8 +18,8 @@ module CSVHash
       hash = {}
       columns.each_with_index do |col, i|
         next unless col
-        col = col.strip
-        val = row[i].strip
+        col = col ? col.strip : nil
+        val = row[i] ? row[i].strip : nil
 
         setter = hash
         sp = col.split('__')

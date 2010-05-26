@@ -12,7 +12,7 @@ describe CSVHash do
     end
     
     it "should get correct column names (no spaces)" do
-      @columns.should == "one,two,foo__bar__three,foo__bar__four,foo__five,bar__six,bar__seven".split(',')
+      @columns.should == "one,two,foo__bar__three,foo__bar__four,foo__five,bar__six,nil,bar__seven".split(',')
     end
     
     it "should only include data rows" do
@@ -27,7 +27,8 @@ describe CSVHash do
           "bar" => {"three" => "3", "four" => "4"},
           "five" => "5"
         },
-        "bar" => {"six" => "6", "seven" => "7"}
+        "bar" => {"six" => "6", "seven" => "7"},
+        "nil" => nil
       }
       @array.first.should == first
       
@@ -38,7 +39,8 @@ describe CSVHash do
           "bar" => {"three" => "12", "four" => "11"},
           "five" => "10"
         },
-        "bar" => {"six" => "9", "seven" => "8"}
+        "bar" => {"six" => "9", "seven" => "8"},
+        "nil" => nil
       }
       @array.last.should == second
     end
