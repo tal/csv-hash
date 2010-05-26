@@ -5,12 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "csv-hash"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{A gem for interacting with CSVs as hashes}
+    gem.description = %Q{Will import a CSV as an array of hashes. Or will export a CSV from an array of hashes (if given a column list).}
     gem.email = "me@talatlas.com"
     gem.homepage = "http://github.com/Talby/csv-hash"
     gem.authors = ["Tal Atlas"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_dependency 'fastercsv', '>= 1.5.0'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
