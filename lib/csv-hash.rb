@@ -44,7 +44,7 @@ module CSVHash
   def to_string hashes, columns
     rows = hashes.collect do |hash|
       vals = columns.collect do |col|
-        sp = col.split('__')
+        sp = col.to_s.split('__')
         ret = hash
         sp.each do |key|
           puts key unless ret
@@ -66,6 +66,7 @@ module CSVHash
   end
 end
 
+# Pass either a path to a csv file to parse which will return an array of hashes (stringified keys) or pass an array of hashes and an array of column names
 def CSVHash arg, columns=nil
   if arg.is_a?(File)
     CSVHash.from_file(arg.path)

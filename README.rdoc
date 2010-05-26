@@ -1,6 +1,17 @@
 = csv-hash
 
-Description goes here.
+Will import a CSV as an array of hashes. Or will export a CSV from an array of hashes (if given a column list).
+
+
+== Usage
+
+=== Parse a csv to an array of hashes
+  CSVHash('path_to_csv.csv')
+
+Note the hash will have strings for keys
+
+=== Generate a string from an array of hashes and a column list
+  CSVHash(array_of_hashes,[:column,"names","in",:order])
 
 == Note on Patches/Pull Requests
  
