@@ -12,7 +12,7 @@ describe CSVHash do
     end
     
     it "should get correct column names (no spaces)" do
-      @columns.should == "one,two,foo__bar__three,foo__bar__four,foo__five,bar__six,nil,bar__seven".split(',')
+      @columns.should == ["one", "two", "foo__bar__three", "foo__bar__four", "foo__five", "bar__six", "nil", "bar__seven"]
     end
     
     it "should only include data rows" do
@@ -47,7 +47,12 @@ describe CSVHash do
   end
   
   
-  it "should do a round trip" do
+  it "should generate an expected file" do
     CSVHash.to_string(*CSVHash.from_file(@csv_path)).chomp.should == File.open(@clean_csv_path).read.chomp
+  end
+  
+  it "should do a round trip" do
+    pending "Desire to add nil columns"
+    CSVHash.to_string(*CSVHash.from_file(@csv_path)).chomp.should == File.open(@csv_path).read.chomp
   end
 end

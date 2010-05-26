@@ -11,7 +11,7 @@ module CSVHash
     FasterCSV.foreach(file) do |row|
       num += 1
       if num == 1
-        columns = row.collect {|c| c.strip}
+        columns = row.collect {|c| c.strip if c}
         next
       end
 
@@ -38,7 +38,7 @@ module CSVHash
       data << hash
     end
     
-    return data, columns
+    return data, columns.compact
   end
   
   def to_string hashes, columns
