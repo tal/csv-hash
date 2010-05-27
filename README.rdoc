@@ -6,12 +6,37 @@ Will import a CSV as an array of hashes. Or will export a CSV from an array of h
 == Usage
 
 === Parse a csv to an array of hashes
-  CSVHash('path_to_csv.csv')
+  array_of_hashes, columns = CSVHash('path_to_csv.csv')
 
-Note the hash will have strings for keys
+Note the hash will have strings for keys and will remove all surrounding whitespace
 
 === Generate a string from an array of hashes and a column list
-  CSVHash(array_of_hashes,[:column,"names","in",:order])
+  string = CSVHash(array_of_hashes,[:column,"names","in",:order])
+
+
+=== Nested Hashes
+
+csv-hash supports nested hashes. A column tree of the structure (note the double underscore):
+  one,two__foo,two__bar__three,two__bar__four
+   1,    2,          3,              4,
+
+will generate:
+  {
+    'one' => '1',
+    'two' => {
+      'foo' => '2',
+      'bar' => {'three' => '3', 'four' => '4'}
+    }
+  }
+
+== Todo
+
+* Remove dependency on Fast CSV
+* Support auto column generation
+* Generate hash of arrays
+* Turn into CSVHash object which contains column structure and other metadata
+* Sequel integration
+* Arbitrary model support
 
 == Note on Patches/Pull Requests
  

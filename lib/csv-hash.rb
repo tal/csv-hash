@@ -67,6 +67,7 @@ module CSVHash
 end
 
 # Pass either a path to a csv file to parse which will return an array of hashes (stringified keys) or pass an array of hashes and an array of column names
+# See readme.rdoc for more detaild information
 def CSVHash arg, columns=nil
   if arg.is_a?(File)
     CSVHash.from_file(arg.path)
