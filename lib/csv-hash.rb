@@ -1,14 +1,15 @@
-require 'faster_csv'
+require 'csv'
+
 module CSVHash
-  module_function
-  
+  extend self
+
   def from_file file
     num = 0
-    
+
     data = []
     columns = []
-    
-    FasterCSV.foreach(file) do |row|
+
+    CSV.foreach(file) do |row|
       num += 1
       if num == 1
         columns = row.collect {|c| c.strip if c}
@@ -37,10 +38,10 @@ module CSVHash
 
       data << hash
     end
-    
+
     return data, columns.compact
   end
-  
+
   def to_string hashes, columns
     rows = hashes.collect do |hash|
       vals = columns.collect do |col|
@@ -52,12 +53,12 @@ module CSVHash
         end
         ret
       end
-      
+
       vals
     end
-    
-    
-    csv_string = FasterCSV.generate do |csv|
+
+
+    csv_string = CSV.generate do |csv|
       csv << columns
       rows.each do |val|
         csv << val
